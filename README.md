@@ -5,6 +5,8 @@ Project Specififc Documentation
 * Configurable layout and css
 * Auto commit and push to github
 * Configurable by doccit.rc file
+ * Run a user configurable command to generate code docs
+ * Configure paths to documentation
 
 Organisation Documentation
 --------------------------
@@ -14,3 +16,8 @@ Organisation Documentation
 * Spit out classes for different languages
 * Do all the same markdown static site generation as the project specific
 functionality.
+
+Other Ideas
+-----------
+
+Historical documentation navigation by tag.

@@ -1,0 +1,18 @@
+{
+  "author": "Raoul Millais <raoul@raoulmillais.com>",
+  "name": "doccit",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "dependencies": {
+    "commander": "~0.6.1",
+    "pkginfo": "~0.2.3"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

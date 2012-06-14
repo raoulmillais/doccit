@@ -13,10 +13,11 @@ As a proof of concept I will get it working with my nodejs projects which alread
 have markdown docs and docco generated code documentation.  It should be easily
 extensible to other projects so the c# wrapper seems sensible next.
 
-Rationale:  It should be stupidly simple and runnable from teamcity.  I've had
-a look at a bunch of static site generators (including jekyll, wheat and docpad)
-but they all seem to chuck in the kitchen sink.  We don't need multiple layouts,
-multiple parsing engines, bundled http server, sitemaps or any of that stuff.
+Rationale:  It should be stupidly simple and runnable from teamcity.  I really 
+don't want to add this into the rake scripts. I've had a look at a bunch of static 
+site generators (including jekyll, wheat and docpad) but they all seem to chuck 
+in the kitchen sink.  We don't need multiple layouts, multiple parsing engines, 
+bundled http server, sitemaps or any of that stuff.
 
 Project Specififc Documentation
 -------------------------------
@@ -27,9 +28,9 @@ in master branch and in the generated html docs
 * Configurable layout and css
 * Generate and format a changelog using git-shortlog
 * Auto commit and push to github
-* Configurable by doccit.rc file or commandline parameters to override
+* Configurable by doccitrc file or commandline parameters to override
  * Default to look in the docs folder of a repository for markdown files
- * Run a user configurable command to generate code docs
+ * Run a user configurable command to generate code docs (e.g. docco / nocco)
  * Configure paths to documentation
 
 Organisation Documentation
@@ -37,8 +38,10 @@ Organisation Documentation
 
 * Pull all public projects in from github API to generate an index
 * It must be opt-in.  We could check for doccit enabled projects by looking for
-the doccit.rc file in the root of all public projects.
-* Spit out classes for different languages.  To enable styling.
+the doccitrc file in the root of all public projects, but it may be preferable
+just to check for a gh-pages branch as that would not tie people unnecesarily
+to this tool.
+* Spit out classes for different project programming languages to enable styling.
 * Do all the same markdown static site generation as the project specific
 functionality.
 
@@ -48,7 +51,8 @@ To Rebase or not to rebase
 It's often [recommended](http://get.inject.io/n/XxsZ6RE7) to just rebase
 the gh-pages branch off master. I don't want to do that as it would be preferable
 for the gh-pages branch to have a log which reflects only commits to the branch
-for releases.  I'd also like more flexibility in what gets included in the branch.
+for release documentation.  I'd also like more flexibility in what gets included
+in the branch.
 
 Other Ideas
 -----------
@@ -58,17 +62,20 @@ Other Ideas
 custom css to the docco generated nodejs docs.
 * It might be nice to automate the fiddly clean way of setting up a gh-pages
 branch.
+* Read package.json for the license and autogenerate a license page.  Add a
+config value to the doccitrc for non-nodejs projects.
+* Configurable project logo path in the doccitrc for displaying in the index on
+the organisation page.
 
 Implementation Notes
 --------------------
 
 * It must be runnable from both linux and windows build agents, so that rules
-out bash scripts, batch files, or Makefiles
+out bash scripts, batch files, or Makefiles.
 * It will presumably need some scratch / temp area for checking out the master
-and gh-pages branches and comitting / pushing.
-* I really don't want to add this into the rake scripts.
+and gh-pages branches and comitting / pushing.  That path should be configurable.
 * It will probably be written in nodejs or ruby as they have plenty of nice CLI
-support libraries, git and github wrappers and it's easy to test and shell out 
+support libraries, git and github wrappers and it's easy to test and shell out
 child processes.
 
 

@@ -107,9 +107,9 @@ Implementation Notes
 out bash scripts, batch files, or Makefiles.
 * It will presumably need some scratch / temp area for checking out the master
 and gh-pages branches and comitting / pushing.  That path should be configurable.
-* It will probably be written in nodejs or ruby as they have plenty of nice CLI
+* It will be written in nodejs, as there are plenty of nice CLI
 support libraries, git and github wrappers and it's easy to test and shell out
-child processes.
+child processes and I can do it quickly in JavaScript.
 
 
 References

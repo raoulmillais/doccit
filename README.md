@@ -28,9 +28,10 @@ Configuration
 Everything should be configurable with sensible defaults and conventions, which
 as far as possible mimic the behaviours of github wiki documentation. Configuration
 options should be read in the following order (lowest priority first):
-1. Default configuration file in the doccit repo.
-2. Per-project configuration file in the root of the project repo.
-3. Command line arguments to the tool.
+
+1.  Default configuration file in the doccit repo.
+2.  Per-project configuration file in the root of the project repo.
+3.  Command line arguments to the tool.
 
 Project Specififc Documentation
 -------------------------------

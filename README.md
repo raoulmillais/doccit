@@ -36,7 +36,7 @@ Project Specififc Documentation
 -------------------------------
 
 * Locate markdown documents in a configurable set of search paths within the
-master branch.
+master branch. (Default to './docs')
 * Generate Github Pages Documentation From Markdown using the same processor as
 github.
  * Github uses their own [redcarpet](https://github.com/tanoku/redcarpet) ruby
@@ -47,9 +47,9 @@ github.
 html.
  * I.E. We'll need to change the file extensions of local hrefs from md to html.
 * Configurable layout html and css
-* Inject the HTML rendered markdown into a configurable element (by CSS selector)
-of a configurable layout html and repeat for each page.
- * I don't think these ought to live in the master branch of the relevant projects
+* Inject the HTML rendered markdown into a configurable element by CSS selector
+(Default: '#content') of a configurable layout html (Default: './layout.html')
+ NOTE: I don't think these ought to live in the master branch of the relevant projects
  if we want to keep consistency.  (Do we?) I guess pulling in an artefact from a separate
  repo/build would make sense as Leighton / whoever can make changes there and have
  them picked up on the next documentation build, and/or we can have changes in that
@@ -59,7 +59,11 @@ of a configurable layout html and repeat for each page.
  * Run a user configurable command to generate code docs (e.g. docco / nocco)
  * Alternatively, specify paths to other generated or custom documentation, which
  can be pulled in as-is without further processing.
-* Auto commit and push to github
+* Delete the input markdown files.
+* Validate all absolute links return 200 OK and all relative links are validate
+* Auto add, commit on the gh-pages branch and push to github.
+
+*What about a navigation menu?*
 
 Organisation Documentation
 --------------------------

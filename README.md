@@ -1,5 +1,5 @@
-About
-=====
+Doccit
+======
 
 A tool to autogenerate documentation for github pages from markdown and code
 documentation generators.  The aim is to make it stupidly easy to have docs
@@ -13,25 +13,53 @@ As a proof of concept I will get it working with my nodejs projects which alread
 have markdown docs and docco generated code documentation.  It should be easily
 extensible to other projects so the c# wrapper seems sensible next.
 
-Rationale:  It should be stupidly simple and runnable from teamcity.  I really 
-don't want to add this into the rake scripts. I've had a look at a bunch of static 
-site generators (including jekyll, wheat and docpad) but they all seem to chuck 
-in the kitchen sink.  We don't need multiple layouts, multiple parsing engines, 
+Rationale
+---------
+
+It should be stupidly simple and runnable from teamcity.  I really don't want to
+add this into the rake scripts. I've had a look at a bunch of static
+site generators (including jekyll, wheat and docpad) but they all seem to chuck
+in the kitchen sink.  We don't need multiple layouts, multiple parsing engines,
 bundled http server, sitemaps or any of that stuff.
+
+Configuration
+-------------
+
+Everything should be configurable with sensible defaults and conventions, which
+as far as possible mimic the behaviours of github wiki documentation. Configuration
+options should be read in the following order (lowest priority first):
+1. Default configuration file in the doccit repo.
+2. Per-project configuration file in the root of the project repo.
+3. Command line arguments to the tool.
 
 Project Specififc Documentation
 -------------------------------
 
-* Generate Github Pages Documentation From Markdown
-* It should seamlessly support linking between markdown files which works both
-in master branch and in the generated html docs
-* Configurable layout and css
-* Generate and format a changelog using git-shortlog
-* Auto commit and push to github
-* Configurable by doccitrc file or commandline parameters to override
+* Locate markdown documents in a configurable set of search paths within the
+master branch.
+* Generate Github Pages Documentation From Markdown using the same processor as
+github.
+ * Github uses their own [redcarpet](https://github.com/tanoku/redcarpet) ruby
+ gem which binds to [sundown](https://github.com/tanoku/sundown) for markdown
+ rendering.
+ * There are also node bindings: [robotskirt](https://github.com/benmills/robotskirt)
+* Ensure relative links between markdown files are preserved in the rendered
+html.
+ * I.E. We'll need to change the file extensions of local hrefs from md to html.
+* Configurable layout html and css
+* Inject the HTML rendered markdown into a configurable element (by CSS selector)
+of a configurable layout html and repeat for each page.
+ * I don't think these ought to live in the master branch of the relevant projects
+ if we want to keep consistency.  (Do we?) I guess pulling in an artefact from a separate
+ repo/build would make sense as Leighton / whoever can make changes there and have
+ them picked up on the next documentation build, and/or we can have changes in that
+ build trigger a rebuild of the documentation for all projects (the last tag).
+* Generate and format a changelog using git-shortlog (Configurable: on by default)
  * Default to look in the docs folder of a repository for markdown files
  * Run a user configurable command to generate code docs (e.g. docco / nocco)
- * Configure paths to documentation
+ * Alternatively, specify paths to other generated or custom documentation, which
+ can be pulled in as-is without further processing.
+* Auto commit and push to github
 
 Organisation Documentation
 --------------------------

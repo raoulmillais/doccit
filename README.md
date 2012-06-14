@@ -42,9 +42,38 @@ the doccit.rc file in the root of all public projects.
 * Do all the same markdown static site generation as the project specific
 functionality.
 
+To Rebase or not to rebase
+--------------------------
+
+It's often [recommended](http://get.inject.io/n/XxsZ6RE7) to just rebase
+the gh-pages branch off master. I don't want to do that as it would be preferable
+for the gh-pages branch to have a log which reflects only commits to the branch
+for releases.  I'd also like more flexibility in what gets included in the branch.
+
 Other Ideas
 -----------
 
 * Historical documentation navigation by tag.
 * Use [this pull request](https://github.com/jashkenas/docco/pull/28) to apply
 custom css to the docco generated nodejs docs.
+* It might be nice to automate the fiddly clean way of setting up a gh-pages
+branch.
+
+Implementation Notes
+--------------------
+
+* It must be runnable from both linux and windows build agents, so that rules
+out bash scripts, batch files, or Makefiles
+* It will presumably need some scratch / temp area for checking out the master
+and gh-pages branches and comitting / pushing.
+* I really don't want to add this into the rake scripts.
+* It will probably be written in nodejs or ruby as they have plenty of nice CLI
+support libraries, git and github wrappers and it's easy to test and shell out 
+child processes.
+
+
+References
+----------
+
+There's some nice scripts [here](http://oli.jp/2011/github-pages-workflow/)
+[TJ Holwaychuk](http://github.com/visionmedia) uses Makefiles and rebasing

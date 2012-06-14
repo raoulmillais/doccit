@@ -9,7 +9,7 @@ build.
 The markdown files in master should reflect docs in progress.  We should trigger
 the documentation push to run when master is tagged (i.e. the project is released)
 
-As a proof of concept i will get it working with my nodejs projects which already
+As a proof of concept I will get it working with my nodejs projects which already
 have markdown docs and docco generated code documentation.  It should be easily
 extensible to other projects so the c# wrapper seems sensible next.
 
@@ -25,6 +25,7 @@ Project Specififc Documentation
 * It should seamlessly support linking between markdown files which works both
 in master branch and in the generated html docs
 * Configurable layout and css
+* Generate and format a changelog using git-shortlog
 * Auto commit and push to github
 * Configurable by doccit.rc file or commandline parameters to override
  * Default to look in the docs folder of a repository for markdown files

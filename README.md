@@ -16,6 +16,30 @@ extensible to other projects so the c# wrapper seems sensible next.
 Rationale
 ---------
 
+For our open source projects, I think it would improve our image and respectability
+if we at least have of splash page: ideally a prettified and branded readme.
+Documentation is boring and tedious and it is easy to get out of sync between
+releases or forgotten about entirely.  This is particularly problematic if there
+are usage examples and master has diverged from the last tagged release.
+
+This tool should encourage consistent and clear documentation by removing and
+automating the tedium.  Most people are already using the readme and markdown
+processing on github.  Having a single readme should be the only requirement for
+using this tool. The aim of this tool is not to set policy or be prescriptive.
+
+Beyond the readme, the tool should also facilitate and encourage more literate
+documentation. Whether that be usage examples, rationale, code docs, or whatever.
+It should be able to detect and be configured to read in other pages and links 
+between markdown files and also prettify them and fix up the links.  Note that 
+the style and content of the documentation is entirely up to the individual 
+project owners and contributors.
+
+Finally, if there are pregenerated code docs these should be included too.  I am
+very aware that is a subject that polarises people.  I personally like a literate
+programming style (for JavaScript and other dynamic languages at least) so I'd
+like the docs I've created for my nodejs projects to be included, but again
+this should be opt-in.
+
 It should be stupidly simple and runnable from teamcity.  I really don't want to
 add this into the rake scripts. I've had a look at a bunch of static
 site generators (including jekyll, wheat and docpad) but they all seem to chuck
@@ -29,7 +53,8 @@ Everything should be configurable with sensible defaults and conventions, which
 as far as possible mimic the behaviours of github wiki documentation. Configuration
 options should be read in the following order (lowest priority first):
 
-1.  Default configuration file in the doccit repo.
+1.  Default configuration file in the doccit repo. (Provides the defaults for
+invoking doccit with no arguments and no project level configuration)
 2.  Per-project configuration file in the root of the project repo.
 3.  Command line arguments to the tool.
 

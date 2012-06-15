@@ -31,19 +31,35 @@ programming style (for JavaScript and other dynamic languages at least) so I'd
 like the docs I've created for my nodejs projects to be included, but again
 this should be opt-in.
 
-It should be stupidly simple and runnable from teamcity.  I really don't want to
-add this into the rake scripts. I've had a look at a bunch of static
-site generators (including jekyll, wheat and docpad) but they all seem to chuck
-in the kitchen sink.  We don't need multiple layouts, multiple parsing engines,
-bundled http server, sitemaps or any of that stuff.
+Invocation and Process
+----------------------
 
 The markdown files in master ought to reflect docs in progress.  We could trigger
-the documentation generation and push to run when master is tagged
-(i.e. a new version of the project is released)
+the documentation generation from teamcity as part of a tagged release (i.e. a new
+version of the project is released)
 
 As a proof of concept I will get it working with my nodejs projects which already
 have markdown docs and docco generated code documentation.  It should be easily
 extensible to other projects so the c# wrapper seems sensible next.
+
+Implementation Notes
+--------------------
+
+* It should be stupidly simple to setup and opt into.
+* It should be runnable from teamcity.
+* I really don't want to dump yet more stuff into the rake scripts.
+* I've had a look at a bunch of static site generators (including jekyll, wheat
+and docpad) but they all seem to chuck in the kitchen sink.
+ * We don't need multiple layouts, multiple parsing engines, bundled http
+ server, sitemaps or any of that stuff.
+* It must be runnable from both linux and windows build agents, so that rules
+out bash scripts, batch files, or Makefiles.
+* It will presumably need some scratch / temp area for checking out the master
+and gh-pages branches and comitting / pushing.  That path should be configurable.
+
+It will be written in nodejs, as there are plenty of nice CLI support libraries,
+git and github wrappers and it's easy to test and shell out child processes and
+I can write it quickly in JavaScript.
 
 Configuration
 -------------
@@ -125,17 +141,6 @@ branch.
 config value to the doccitrc for non-nodejs projects.
 * Configurable project logo path in the doccitrc for displaying in the index on
 the organisation page.
-
-Implementation Notes
---------------------
-
-* It must be runnable from both linux and windows build agents, so that rules
-out bash scripts, batch files, or Makefiles.
-* It will presumably need some scratch / temp area for checking out the master
-and gh-pages branches and comitting / pushing.  That path should be configurable.
-* It will be written in nodejs, as there are plenty of nice CLI
-support libraries, git and github wrappers and it's easy to test and shell out
-child processes and I can do it quickly in JavaScript.
 
 
 References

@@ -8,7 +8,7 @@ Rationale
 ---------
 
 For our open source projects, I think it would improve our image and respectability
-if we at least have of splash page: ideally a prettified and branded readme.
+if we at least have a splash page: ideally a prettified and branded readme.
 Documentation is boring and tedious and it is easy to get out of sync between
 releases or forgotten about entirely.  This is particularly problematic if there
 are usage examples and master has diverged from the last tagged release.
@@ -19,7 +19,7 @@ processing on github.  Having a single readme should be the only requirement for
 using this tool. The aim of this tool is not to set policy or be prescriptive.
 
 Beyond the readme, the tool should also facilitate and encourage more literate
-documentation. Whether that be usage examples, rationale, code docs, or whatever.
+documentation, whether that be usage examples, rationale, code docs, or whatever.
 It should be able to detect and be configured to read in other pages and links
 between markdown files and also prettify them and fix up the links.  Note that
 the style and content of the documentation is entirely up to the individual
@@ -52,12 +52,12 @@ Everything should be configurable with sensible defaults and conventions, which
 as far as possible mimic the behaviours of github wiki documentation. Configuration
 options should be read in the following order (lowest priority first):
 
-1.  Default configuration file in the doccit repo. (Provides the defaults for
+1. Default configuration file in the doccit repo. (Provides the defaults for
 invoking doccit with no arguments and no project level configuration)
-2.  Per-project configuration file in the root of the project repo.
-3.  Command line arguments to the tool.
+2. Per-project configuration file in the root of the project repo.
+3. Command line arguments to the tool.
 
-Project Specififc Documentation
+Project Specific Documentation
 -------------------------------
 
 * Locate markdown documents in a configurable set of search paths within the
@@ -92,6 +92,8 @@ html.
 
 Organisation Documentation
 --------------------------
+
+Generates a catalogue / index of our open source projects.
 
 * Pull all public projects in from github API to generate an index
 * It must be opt-in.  We could check for doccit enabled projects by looking for
@@ -139,5 +141,5 @@ child processes and I can do it quickly in JavaScript.
 References
 ----------
 
-There's some nice scripts [here](http://oli.jp/2011/github-pages-workflow/)
-[TJ Holwaychuk](http://github.com/visionmedia) uses Makefiles and rebasing
+* There's some nice scripts [here](http://oli.jp/2011/github-pages-workflow/)
+* [TJ Holwaychuk](http://github.com/visionmedia) uses Makefiles and rebasing

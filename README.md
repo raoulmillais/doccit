@@ -7,7 +7,7 @@ branch and optionally any other static code documentation.
 Rationale
 ---------
 
-For our open source projects, I think it would improve our image and respectability
+For our open source projects, It would improve our [image and respectability](http://blog.nodejitsu.com/understanding-open-source-branding)
 if we at least have a splash page: ideally a prettified and branded readme.
 Documentation is boring and tedious and it is easy to get out of sync between
 releases or forgotten about entirely.  This is particularly problematic if there
@@ -31,8 +31,8 @@ programming style (for JavaScript and other dynamic languages at least) so I'd
 like the docs I've created for my nodejs projects to be included, but again
 this should be opt-in.
 
-Invocation and Process
-----------------------
+Setup and Approach
+------------------
 
 The markdown files in master ought to reflect docs in progress.  We could trigger
 the documentation generation from teamcity as part of a tagged release (i.e. a new
@@ -41,9 +41,6 @@ version of the project is released)
 As a proof of concept I will get it working with my nodejs projects which already
 have markdown docs and docco generated code documentation.  It should be easily
 extensible to other projects so the c# wrapper seems sensible next.
-
-Implementation Notes
---------------------
 
 * It should be stupidly simple to setup and opt into.
 * It should be runnable from teamcity.

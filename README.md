@@ -58,6 +58,15 @@ It will be written in nodejs, as there are plenty of nice CLI support libraries,
 git and github wrappers and it's easy to test and shell out child processes and
 I can write it quickly in JavaScript.
 
+Unresolved Questions
+--------------------
+
+* Can we retrieve markdown versions of licenses from an authoritave source on the
+internet automatically?
+* Should the order of precedence be when config can be come from package
+specifications of the projects (i.e. npm, nuspec etc) be package first or doccit
+config first?
+
 Configuration
 -------------
 
@@ -68,7 +77,9 @@ options should be read in the following order (lowest priority first):
 1. Default configuration file in the doccit repo. (Provides the defaults for
 invoking doccit with no arguments and no project level configuration)
 2. Per-project configuration file in the root of the project repo.
-3. Command line arguments to the tool.
+3. In some cases there may be a duplicate config value in the project's own
+package config (e.g. package.json or nuspec.
+4. Command line arguments to the tool.
 
 Project Specific Documentation
 -------------------------------
@@ -102,6 +113,15 @@ html.
 * Auto add, commit on the gh-pages branch and push to github.
 
 *What about a navigation menu?*
+
+Boilerplates
+------------
+
+* Semver versioning and release documentation with links.  We will need to specify
+a version scheme in config to account for (at least) semver and semver-node.
+* License documentation. Nuspec specifies a URL and since npm is json you may
+specify a license property.  Alternatively a license may be specified in the
+doccit config as a fallback.
 
 Organisation Documentation
 --------------------------

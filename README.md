@@ -26,7 +26,7 @@ the style and content of the documentation is entirely up to the individual
 project owners and contributors.
 
 Finally, if there are pregenerated code docs these should be included too.  I am
-very aware that is a subject that polarises people.  I personally like a literate
+aware that is a subject that polarises people.  I personally like a literate
 programming style (for JavaScript and other dynamic languages at least) so I'd
 like the docs I've created for my nodejs projects to be included, but again
 this should be opt-in.
@@ -35,8 +35,8 @@ Setup and Approach
 ------------------
 
 The markdown files in master ought to reflect docs in progress.  We could trigger
-the documentation generation from teamcity as part of a tagged release (i.e. a new
-version of the project is released)
+the documentation generation from teamcity as part of a tagged release (i.e. a
+new version of the project is released).
 
 As a proof of concept I will get it working with my nodejs projects which already
 have markdown docs and docco generated code documentation.  It should be easily
@@ -57,15 +57,6 @@ and gh-pages branches and comitting / pushing.  That path should be configurable
 It will be written in nodejs, as there are plenty of nice CLI support libraries,
 git and github wrappers and it's easy to test and shell out child processes and
 I can write it quickly in JavaScript.
-
-Unresolved Questions
---------------------
-
-* Can we retrieve markdown versions of licenses from an authoritave source on the
-internet automatically?
-* Should the order of precedence be when config can be come from package
-specifications of the projects (i.e. npm, nuspec etc) be package first or doccit
-config first?
 
 Configuration
 -------------
@@ -112,8 +103,6 @@ html.
 * Validate all absolute links return 200 OK and all relative links are validate
 * Auto add, commit on the gh-pages branch and push to github.
 
-*What about a navigation menu?*
-
 Boilerplates
 ------------
 
@@ -123,19 +112,49 @@ a version scheme in config to account for (at least) semver and semver-node.
 specify a license property.  Alternatively a license may be specified in the
 doccit config as a fallback.
 
-Organisation Documentation
---------------------------
+Unresolved Questions
+--------------------
 
-Generates a catalogue / index of our open source projects.
+* Can we retrieve markdown versions of licenses from an authoritave source on the
+internet automatically?
+* Should the order of precedence be when config can be come from package
+specifications of the projects (i.e. npm, nuspec etc) be package first or doccit
+config first?
 
-* Pull all public projects in from github API to generate an index
-* It must be opt-in.  We could check for doccit enabled projects by looking for
-the doccitrc file in the root of all public projects, but it may be preferable
-just to check for a gh-pages branch as that would not tie people unnecesarily
-to this tool.
-* Spit out classes for different project programming languages to enable styling.
-* Do all the same markdown static site generation as the project specific
-functionality.
+Reporters
+---------
+
+* Standard CLI reporter with ANSI colors
+* Teamcity progress reporter
+
+Sources
+-------
+
+* Markdown parser and linker
+* Child process (shell out to other application)
+* Docco
+
+Doccit also needs to know (and ideally control) where the output will be from a
+source and which artefacts must be linked to in the navigation.
+
+Outputs
+-------
+
+* Asset file (e.g. image or zip)
+* Homepage (a special type of single file as doccit must name it index.html and
+put it in the root of the final agglomerated output.
+* Folder - can have index.html and a title and / or an array of paths and titles
+within the folder to put in the navigation.
+
+Destinations
+------------
+
+Once the sources have all been converted to outputs, doccit will agglomerate all
+the outputs and send them to a destination.
+
+* path - a folder on the filesystem
+* zip - a zip file
+* gh-pages - github pages (defer to [hub](https://github.com/defunkt/hub) or similar?)
 
 To Rebase or not to rebase
 --------------------------
@@ -149,16 +168,14 @@ in the branch.
 Other Ideas
 -----------
 
+* [Organisation page generator](docs/organisation.md)
 * Historical documentation navigation by tag.
 * Use [this pull request](https://github.com/jashkenas/docco/pull/28) to apply
 custom css to the docco generated nodejs docs.
 * It might be nice to automate the fiddly clean way of setting up a gh-pages
 branch.
-* Read package.json for the license and autogenerate a license page.  Add a
-config value to the doccitrc for non-nodejs projects.
 * Configurable project logo path in the doccitrc for displaying in the index on
 the organisation page.
-
 
 References
 ----------

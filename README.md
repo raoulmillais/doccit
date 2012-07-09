@@ -58,6 +58,11 @@ It will be written in nodejs, as there are plenty of nice CLI support libraries,
 git and github wrappers and it's easy to test and shell out child processes and
 I can write it quickly in JavaScript.
 
+Doccit should provide a compiler-like interface to documentation generation.  It
+will operate on multiple named resources (the documentation sources) to produce
+several outputs which will be agglomerated into a final destination (sink). It
+should read its configuration at startup and be highly sciptable.
+
 Configuration
 -------------
 
@@ -65,12 +70,16 @@ Everything should be configurable with sensible defaults and conventions, which
 as far as possible mimic the behaviours of github wiki documentation. Configuration
 options should be read in the following order (lowest priority first):
 
-1. Default configuration file in the doccit repo. (Provides the defaults for
-invoking doccit with no arguments and no project level configuration)
-2. Per-project configuration file in the root of the project repo.
-3. In some cases there may be a duplicate config value in the project's own
-package config (e.g. package.json or nuspec.
-4. Command line arguments to the tool.
+1. Default runcontrol file in the doccit repo. (Provides the defaults for
+invoking doccit with no arguments and no project level configuration, this
+should be symlinked to a system locaation for per-site configuration when
+installing on a system)
+2. Per-user configuration file in the home directory of the current user.
+3. Environement variables.
+4. Per-project configuration file in the root of the project repo.
+5. In some cases there may be a duplicate config value in the project's own
+package config (e.g. package.json or nuspec.)
+6. Command line arguments to the tool.
 
 Project Specific Documentation
 -------------------------------
@@ -146,11 +155,11 @@ put it in the root of the final agglomerated output.
 * Folder - can have index.html and a title and / or an array of paths and titles
 within the folder to put in the navigation.
 
-Destinations
-------------
+Destinations (Sinks)
+--------------------
 
 Once the sources have all been converted to outputs, doccit will agglomerate all
-the outputs and send them to a destination.
+the outputs and send them to a destination sink.
 
 * path - a folder on the filesystem
 * zip - a zip file

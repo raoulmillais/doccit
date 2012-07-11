@@ -1,5 +1,11 @@
-var program = require('commander'),
-	pkg = require('./lib/package');
+var underscore = require('underscore'),
+	options = require('./lib/options'),
+	about = require('./lib/about'),
+	program;
 
-program
-	.version(pkg.version);
+program = {};
+underscore.extend(program, about);
+
+program.options = options;
+
+module.exports = program;

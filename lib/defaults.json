@@ -1,0 +1,6 @@
+{
+	"configFile": "doccitrc",
+	"searchPath": [
+		"./docs"
+	]
+}

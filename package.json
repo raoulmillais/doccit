@@ -2,15 +2,22 @@
   "author": "Raoul Millais <raoul@raoulmillais.com>",
   "name": "doccit",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "./index",
+  "bin": {
+    "doccit": "./bin/doccit"
+  },
   "scripts": {
     "test": "mocha spec"
   },
   "dependencies": {
-    "commander": "~0.6.1",
-    "pkginfo": "~0.2.3"
+    "optimist": "~0.3.4",
+    "pkginfo": "~0.2.3",
+    "underscore": "~1.3.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "~1.0.4",
+    "mocha": "~1.1.0"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
